@@ -1,7 +1,7 @@
 # Team Name
 
 ### Team Members
-1.Evan Burnside
+1. Evan Burnside
 
 ### Final Proposal
 1. Persona/Scenario
