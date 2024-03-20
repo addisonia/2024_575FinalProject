@@ -1,6 +1,8 @@
 # Team Name
 
 ### Team Members
+1. Evan Burnside
+2. Addison Atkin
 
 ### Final Proposal
 1. Persona/Scenario
