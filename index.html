@@ -1,29 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-            <title></title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Energy Selection Map</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="lib/jquery-3.5.1.js"></script>
 
-        <!--put your external stylesheet links here-->
-        <link rel="stylesheet" href="css/style.css">
-        <!--[if IE<9]>
-            <link rel="stylesheet" href="css/style.ie.css">
-        <![endif]-->
+        <div class="map-box" id="map">
+            <!-- Leaflet map will be displayed here -->
 
-         <!--you can also place internal styles here;
-             place these within <style> tags-->
-        
-    </head>
-
-    <body>
-        <!--put your initial page content here-->
-
-        <!--you can also use this space for internal scripts;
-        place these within <script> tags-->
-
-        <!--put your external script links here-->
-        <script type="text/javascript" src="js/main.js"></script>
-        <script type="text/javascript" src="lib/jquery-3.5.1.js"></script>
-    </body>
+            <div class="container">
+                <div class="title-box">
+                    <h1>Title Text Template</h1>
+                </div>
+                <div class="selection-box">
+                    <h2>Energy Selection</h2>
+                    <div class="energy-selection">
+                        <input type="radio" id="coal" name="energy" value="coal">
+                        <label for="coal">Coal</label><br>
+                        <input type="radio" id="gas" name="energy" value="gas">
+                        <label for="gas">Gas</label><br>
+                        <input type="radio" id="hydro" name="energy" value="hydro">
+                        <label for="hydro">Hydro</label><br>
+                        <input type="radio" id="geothermal" name="energy" value="geothermal">
+                        <label for="geothermal">Geothermal</label><br>
+                        <input type="radio" id="solar" name="energy" value="solar">
+                        <label for="solar">Solar</label><br>
+                        <input type="radio" id="wind" name="energy" value="wind">
+                        <label for="wind">Wind</label>
+                    </div>
+                    <h2>Basemap Selection</h2>
+                    <div class="basemap-selection">
+                        <input type="radio" id="white" name="basemap" value="white">
+                        <label for="white">White</label><br>
+                        <input type="radio" id="openstreetmap" name="basemap" value="openstreetmap">
+                        <label for="openstreetmap">OpenStreetMap</label><br>
+                        <input type="radio" id="satellite" name="basemap" value="satellite">
+                        <label for="satellite">Satellite</label><br>
+                        <input type="radio" id="solar-potential" name="basemap" value="solar-potential">
+                        <label for="solar-potential">Solar Potential</label><br>
+                        <input type="radio" id="wind-potential" name="basemap" value="wind-potential">
+                        <label for="wind-potential">Wind Potential</label><br>
+                    </div>
+                    <div class="toggle-transmission">
+                        <input type="checkbox" id="toggle-transmission">
+                        <label for="toggle-transmission">Toggle Transmission Layer</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-dropdown">
+                <h2>Stats Dropdown</h2>
+                <!-- Add stats dropdown menu here -->
+            </div>
+            <div class="legend-box">
+                <h2>Legend</h2>
+                <!-- Add legend content here -->
+            </div>
+        </div>
+    </div>
+</body>
 </html>
