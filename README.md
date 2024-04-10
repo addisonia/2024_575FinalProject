@@ -24,7 +24,7 @@ Background Description: Ciaran is the Energy and Air Manager at Clean Wisconsin 
 
 Scenario: Once the user arrives at the website, they will see a map of Wisconsin displayed in the map section (by default), with the high-voltage transmission lines displayed over it. A popup will ask the user for permission to ask for their location. If accepted, the map will pan to the state the user is currently located in. If the user does not accept giving their location or is located outside of the US, then the map will stay at the default location of Wisconsin. The user can then pan amongst the states, change the energy source displayed, and/or the basemap.  The user, who is from Iowa, decides to pan the map to Iowa. By default, no energy sources are displayed on the map. The user wants to see the wind farms so they select the option to display wind farms from the energy selection dropdown. The default basemap displayed is a blank map of the state, with the transmission line toggle option enabled by default as well. The user decides to change the basemap to a simple roadmap and they decide to keep the transmission line toggle on. The user then clicks on the state of Iowa in the map. The map highlights the state and “selects” it. On the top right of the site, the user then clicks the stats dropdown to see how energy distribution and infrastructure compares in the currently selected state - which is Iowa. One of the things shown in the stats dropdown, for example, is the average distance of each energy source (like wind, solar, and coal) to high-voltage transmission lines.
 
-
+![alt text](https://github.com/ejburn01/2024_575FinalProject/blob/img/Representation_Table.png?raw=true)
 
 
 
