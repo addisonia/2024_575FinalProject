@@ -26,6 +26,10 @@ Scenario: Once the user arrives at the website, they will see a map of Wisconsin
 
 ![Representation Table](https://github.com/ejburn01/2024_575FinalProject/tree/main/img/Representation_Table.png?raw=true)
 
+![Interaction Table](https://github.com/ejburn01/2024_575FinalProject/tree/main/img/Interaction_Table.png?raw=true)
+
+![Prototype Sketch](https://github.com/ejburn01/2024_575FinalProject/tree/main/img/575ProjectSketch.png?raw=true)
+
 
 
 
