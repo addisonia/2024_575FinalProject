@@ -35,14 +35,23 @@ body {
     padding: 10px;
     background-color: #f0f0f0;
     border: 2px solid black;
-    width: 33.33%;
+    width: 40%;
     margin-left: 0px;
     padding-left: 30px;
     text-align: center;
     justify-content: center;
     align-items: center;
     padding-right: 30px;
+    border-left: none;
 }
+
+/*makes title box same width as selection box for small screens */
+
+/* @media (max-width: 800px){
+    .title-box{
+        width: 245px;
+    }
+} */
 
 .selection-box {
     grid-column: 1;
@@ -54,11 +63,25 @@ body {
     background-color: #f0f0f0;
     border: 2px solid black;
     overflow-y: auto;
+    border-left: none;
 }
 
-.energy-selection,
+.energy-selection-header {
+    margin-top: 30px;
+}
+
+.energy-selection {
+    margin-bottom: 40px;
+}
+
 .basemap-selection {
+    margin-bottom: 40px;
+}
+
+.toggle-transmission {
+    margin-top: 20px;
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .stats-dropdown {
@@ -69,15 +92,17 @@ body {
     background-color: #f0f0f0;
     border: 2px solid black;
     width: 200px;
+    text-align: center;
 }
 
 .legend-box {
     position: absolute;
     bottom: 10px;
     left: 320px;
-    padding: 10px;
+    padding: 0px;
     background-color: #f0f0f0;
     border: 2px solid black;
     width: 200px;
     height: 150px;
+    text-align: center;
 }
