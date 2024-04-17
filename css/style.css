@@ -64,6 +64,7 @@ body {
     border: 2px solid black;
     overflow-y: auto;
     border-left: none;
+    border-top: none;
 }
 
 .energy-selection-header {
@@ -86,13 +87,35 @@ body {
 
 .stats-dropdown {
     position: absolute;
-    top: 10px;
+    top: 0px;
     right: 10px;
-    padding: 10px;
+    padding: 5px;
+    padding-top: none;
+    padding-bottom: 15px;
     background-color: #f0f0f0;
     border: 2px solid black;
-    width: 200px;
-    text-align: center;
+    border-top: none;
+    width: 150px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
+.stats-dropdown h2 {
+    margin: 0;
+}
+
+.stats-dropdown i {
+    position: absolute;
+    bottom: 5px;
+    right: 50%;
+    transform: translateX(50%);
+    font-size: 14px;
+    cursor: grab;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 .legend-box {
