@@ -22,6 +22,8 @@
         <div class="selection-box">
             <h2 class="energy-selection-header">Energy Selection</h2>
             <div class="energy-selection">
+                <input type="radio" id="none" name="energy" value="none">
+                <label for="none">None</label><br>
                 <input type="radio" id="coal" name="energy" value="coal">
                 <label for="coal">Coal</label><br>
                 <input type="radio" id="gas" name="energy" value="gas">
@@ -53,11 +55,15 @@
                 <label for="toggle-transmission">Toggle Transmission Layer</label>
             </div>
         </div>
-        <div class="stats-dropdown-chevron">
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="stats-dropdown-text">
-            <h2>Stats Dropdown</h2>
+        <div class="stats-dropdown">
+            <div class="stats-dropdown-text">
+              <h2>Stats Dropdown</h2>
+            </div>
+            <div class="stats-dropdown-chevron">
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-chevron-up"></i>
+            </div>
+            <div class="blank-box"></div>
         </div>
 
         <div class="legend-box">

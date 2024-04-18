@@ -1,7 +1,10 @@
 **BUGS**
-    - probabaly a lot
+    - none
 
 
 
 **TO ADD**
-    - everything
+    - make the stats dropdown actually drop down lol
+    - add data to repo
+    - use the data to add the fuel sources and 
+    whatnot to the map

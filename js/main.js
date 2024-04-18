@@ -12,4 +12,13 @@ document.addEventListener('DOMContentLoaded', function() {
         maxZoom: 19,
         attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
     }).addTo(map);
+
+
+    // Dropdown functionality
+    var chevron = document.querySelector('.stats-dropdown-chevron');
+    chevron.addEventListener('click', function() {
+      this.classList.toggle('expanded');
+    });
+
+
 });
