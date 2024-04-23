@@ -23,9 +23,10 @@ body {
     height: 100vh;
     width: 100%;
     pointer-events: none;
+
 }
 
-.container > * {
+.container > *{
     pointer-events: auto;
 }
 
@@ -43,6 +44,7 @@ body {
     align-items: center;
     padding-right: 30px;
     border-left: none;
+    z-index: 2;
 }
 
 /*makes title box same width as selection box for small screens */
@@ -65,6 +67,7 @@ body {
     overflow-y: auto;
     border-left: none;
     border-top: none;
+    z-index: 2;
 }
 
 .energy-selection-header {
@@ -85,10 +88,16 @@ body {
     font-weight: bold;
 }
 
+.stats-dropdown {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+}
+
+
 .stats-dropdown-text {
-    position: absolute;
-    top: 0px;
-    right: 10px;
+    /* position: absolute; */
+    /* top: 0px; */
     padding: 5px;
     padding-top: 10px;
     padding-bottom: 15px;
@@ -101,6 +110,7 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 12px;
+    z-index: 2;
   }
   
   .stats-dropdown-chevron {
@@ -119,10 +129,11 @@ body {
     font-size: 14px;
     cursor: pointer;
     transition: top 0.3s ease;
+    z-index: 2;
   }
   
   .stats-dropdown-chevron.expanded {
-    top: calc(80% - 20px);
+    top: calc(100% + 50vh + 46px);
   }
   
   .stats-dropdown-chevron i {
@@ -148,7 +159,7 @@ body {
   .blank-box {
     position: absolute;
     top: 45px;
-    right: 10px;
+    right: 0px;
     width: 310px;
     height: 0;
     background-color: #f0f0f0;
@@ -156,10 +167,12 @@ body {
     border-right: 2px solid black;
     border-bottom: 2px solid black;
     transition: height 0.3s ease;
+    z-index: 2;
+    pointer-events: auto;
   }
   
   .stats-dropdown-chevron.expanded + .blank-box {
-    height: calc(75% - 25px);
+    height: calc(100% + 50vh);
   }
 
 
@@ -175,4 +188,5 @@ body {
     width: 200px;
     height: 150px;
     text-align: center;
+    z-index: 2;
 }
