@@ -1,8 +1,9 @@
 //Leaflet map
+var map;
 
 //intialization
-document.addEventListener('DOMContentLoaded', function() {
-    var map = L.map('map', {
+function createMap() {
+    map = L.map('map', {
         center: [44.5, -92],
         zoom: 7,
         zoomControl: true
@@ -48,4 +49,48 @@ document.addEventListener('DOMContentLoaded', function() {
     chevron.addEventListener('click', function() {
         this.classList.toggle('expanded');
     });
-});
+    getData();
+};
+
+function pointToLayer(feature, latlng){
+
+    //create marker options
+    var options = {
+        fillColor: "#ff7800",
+        color: "#000",
+        weight: 1,
+        opacity: 1,
+        radius:10,
+        fillOpacity: 0.65
+    };
+
+    //create circle marker layer
+    var layer = L.circleMarker(latlng, options);
+
+    //return the circle marker to the L.geoJson pointToLayer option
+    return layer;
+};
+
+function createPropSymbols(data){
+    console.log(data)
+    L.geoJson(data, {
+        pointToLayer: function(feature, latlng){
+            return pointToLayer(feature, latlng);
+        }
+    }).addTo(map);
+};
+
+function getData(){
+    //load the data
+    fetch("data/PowerPlants_Continental_US_project.geojson")
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(json){
+            createPropSymbols(json);
+        })
+};
+
+document.addEventListener('DOMContentLoaded',createMap())
+
+
