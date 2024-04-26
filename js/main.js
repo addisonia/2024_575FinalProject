@@ -52,32 +52,72 @@ function createMap() {
     getData();
 };
 
-function pointToLayer(feature, latlng){
+function pointToLayer(feature, latlng, attributes){
 
+    //console.log(attributes[0])
+    var valueDict = {};
+
+    attributes.forEach(function(attribute) {
+        var attValue = feature.properties[attribute];
+        valueDict[attribute] = attValue
+
+    });
+    //console.log(valueDict)
+    
     //create marker options
     var options = {
         fillColor: "#ff7800",
         color: "#000",
         weight: 1,
         opacity: 1,
-        radius:10,
+        radius:7,
         fillOpacity: 0.65
     };
 
     //create circle marker layer
     var layer = L.circleMarker(latlng, options);
 
+    //build popup content string
+    var popupContent = new PopupContent(feature.properties, valueDict);
+
+    layer.bindPopup(popupContent.formatted,{
+        offset: new L.Point(0,-Math.sqrt(options.radius))
+    });
+
     //return the circle marker to the L.geoJson pointToLayer option
     return layer;
 };
 
-function createPropSymbols(data){
-    console.log(data)
+function createPropSymbols(data, attributes){
+    //console.log(data)
     L.geoJson(data, {
         pointToLayer: function(feature, latlng){
-            return pointToLayer(feature, latlng);
+            return pointToLayer(feature, latlng, attributes);
         }
     }).addTo(map);
+};
+
+function PopupContent(properties, valueDict){
+    this.formatted = "<p><b>Plant Name:</b> " + valueDict["Plant_Name"] + "</p><p><b>Primary Source:</b> " + valueDict["PrimSource"] + "</p><p><b>Distance to high-voltage transmission:</b> " + valueDict["NEAR_DIST"] + " miles</p>";
+};
+
+function processData(data){
+    //empty array to hold attributes
+    var attributes = [];
+
+    //properties of the first feature in the dataset
+    var properties = data.features[0].properties;
+    console.log(properties)
+
+    //push each attribute name into attributes array
+    for (var attribute in properties){
+        //only take attributes with population values
+        if (attribute == "Plant_Name" || attribute == "NEAR_DIST" || attribute == "PrimSource"){
+            attributes.push(attribute);
+        };
+    };
+
+    return attributes;
 };
 
 function getData(){
@@ -87,7 +127,8 @@ function getData(){
             return response.json();
         })
         .then(function(json){
-            createPropSymbols(json);
+            var attributes = processData(json);
+            createPropSymbols(json, attributes);
         })
 };
 
