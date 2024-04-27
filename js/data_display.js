@@ -2,15 +2,65 @@
 var transmissionLayer;
 
 function getData() {
-    // Load the power plants data as before
-    fetch("data/PowerPlants_Continental_US_project.geojson")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (json) {
-            var attributes = processData(json);
-            createPropSymbols(json, attributes);
+    // Find all the energy checkboxes
+    var energyCheckboxes = document.querySelectorAll('input[name="energy"]');
+    energyCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+            updateDisplayedEnergySources();
         });
+    });
+
+    // Function to update the displayed energy sources based on the checked checkboxes
+    function updateDisplayedEnergySources() {
+        // Remove all existing layers from the map
+        map.eachLayer(function (layer) {
+            if (layer instanceof L.CircleMarker) {
+                map.removeLayer(layer);
+            }
+        });
+
+        // Get the checked energy sources
+        var checkedEnergySources = Array.from(energyCheckboxes)
+            .filter(function (checkbox) {
+                return checkbox.checked;
+            })
+            .map(function (checkbox) {
+                return checkbox.value;
+            });
+
+        // Map the checkbox values to the corresponding values in the GeoJSON data
+        var mappedEnergySources = checkedEnergySources.map(function (source) {
+            switch (source) {
+                case 'hydro':
+                    return 'hydroelectric';
+                case 'gas':
+                    return 'natural gas';
+                default:
+                    return source;
+            }
+        });
+
+        // Load the power plants data and filter based on the checked energy sources
+        fetch("data/PowerPlants_Continental_US_project.geojson")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (json) {
+                var filteredFeatures = json.features.filter(function (feature) {
+                    return mappedEnergySources.includes(feature.properties.PrimSource);
+                });
+                var filteredJson = {
+                    type: "FeatureCollection",
+                    features: filteredFeatures
+                };
+                var attributes = processData(filteredJson);
+                createPropSymbols(filteredJson, attributes);
+            });
+    }
+
+    // Check the solar checkbox by default
+    document.getElementById("solar").checked = true;
+    updateDisplayedEnergySources();
 
     // Load the transmission data
     fetch("data/Transmission_Continental_US.geojson")
@@ -22,20 +72,3 @@ function getData() {
             transmissionLayer = L.geoJson(data);
         });
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-
-    // Find the toggle checkbox
-    var transmissionToggle = document.getElementById('toggle-transmission');
-    
-    // Add a change event listener to toggle the transmission layer
-    transmissionToggle.addEventListener('change', function() {
-        if (this.checked) {
-            // If the checkbox is checked, add the transmission layer to the map
-            transmissionLayer.addTo(map);
-        } else {
-            // If the checkbox is unchecked, remove the transmission layer from the map
-            transmissionLayer.remove();
-        }
-    });
-});
