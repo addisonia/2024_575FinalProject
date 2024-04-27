@@ -49,7 +49,20 @@ function createMap() {
     chevron.addEventListener('click', function () {
         this.classList.toggle('expanded');
     });
-    getData();
+
+    // Find the toggle checkbox
+    var transmissionToggle = document.getElementById('toggle-transmission');
+
+    // Add a change event listener to toggle the transmission layer
+    transmissionToggle.addEventListener('change', function() {
+        if (this.checked) {
+            // If the checkbox is checked, add the transmission layer to the map
+            transmissionLayer.addTo(map);
+        } else {
+            // If the checkbox is unchecked, remove the transmission layer from the map
+            map.removeLayer(transmissionLayer);
+        }
+    });
 };
 
 function calcColor(attValue) {
@@ -144,25 +157,8 @@ function processData(data) {
     return attributes;
 };
 
-function getData() {
-    //load the data
-    fetch("data/PowerPlants_Continental_US_project.geojson")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (json) {
-            var attributes = processData(json);
-            createPropSymbols(json, attributes);
-        })
-    fetch("data/Transmission_Continental_US.geojson")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            L.geoJson(data).addTo(map);
-        })
-};
-
-document.addEventListener('DOMContentLoaded', createMap())
-
+document.addEventListener('DOMContentLoaded', function() {
+    createMap();
+    getData();
+});
 
