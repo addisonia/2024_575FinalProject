@@ -72,3 +72,23 @@ function getData() {
             transmissionLayer = L.geoJson(data);
         });
 }
+
+
+function processData(data) {
+    //empty array to hold attributes
+    var attributes = [];
+
+    //properties of the first feature in the dataset
+    var properties = data.features[0].properties;
+    console.log(properties)
+
+    //push each attribute name into attributes array
+    for (var attribute in properties) {
+        //only take attributes with population values
+        if (attribute == "Plant_Name" || attribute == "NEAR_DIST" || attribute == "PrimSource") {
+            attributes.push(attribute);
+        };
+    };
+
+    return attributes;
+};
