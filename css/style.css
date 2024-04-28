@@ -169,12 +169,31 @@ body {
     transition: height 0.3s ease;
     z-index: 2;
     pointer-events: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
   
   .stats-dropdown-chevron.expanded + .blank-box {
     height: calc(100% + 50vh);
+    overflow-y: auto;
   }
 
+  .blank-box h2 {
+    margin-top: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+  }
+  
+  .blank-box p {
+    margin: 5px 0;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
 
 

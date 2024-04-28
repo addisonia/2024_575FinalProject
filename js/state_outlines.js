@@ -24,6 +24,14 @@ function addStateOutlines(map) {
             });
 
             selectedStateLayer = layer;
+
+            // Trigger a custom event with the clicked state's data
+            var event = new CustomEvent('stateclick', {
+              detail: {
+                state: feature.properties.NAME
+              }
+            });
+            document.dispatchEvent(event);
           });
         },
         filter: function (feature) {
@@ -49,8 +57,15 @@ function addStateOutlines(map) {
           weight: 3,
           fillOpacity: 0
         });
-
         selectedStateLayer = wisconsinLayer;
+
+        // Trigger the custom event for Wisconsin on page load
+        var event = new CustomEvent('stateclick', {
+          detail: {
+            state: 'Wisconsin'
+          }
+        });
+        document.dispatchEvent(event);
       }
     });
 }
