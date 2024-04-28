@@ -63,6 +63,9 @@ function createMap() {
             map.removeLayer(transmissionLayer);
         }
     });
+
+    addStateOutlines(map);
+
 };
 
 function calcColor(attValue) {
