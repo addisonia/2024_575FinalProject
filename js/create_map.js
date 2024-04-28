@@ -134,5 +134,17 @@ function calcColor(attValue) {
 
 
 function PopupContent(properties, valueDict) {
-    this.formatted = "<p><b>Plant Name:</b> " + valueDict["Plant_Name"] + "</p><p><b>Primary Source:</b> " + valueDict["PrimSource"] + "</p><p><b>Distance to high-voltage transmission:</b> " + valueDict["NEAR_DIST"] + " miles</p>";
+    var distance = valueDict["NEAR_DIST"];
+
+    // Round the distance to one decimal place
+    var roundedDistance = Math.round(distance * 10) / 10;
+
+    // Determine the correct unit (mile or miles)
+    var distanceUnit = roundedDistance === 1 ? "mile" : "miles";
+
+    // Format the distance for display in the popup
+    var formattedDistance = roundedDistance + " " + distanceUnit;
+
+    this.formatted = "<p><b>Plant Name:</b> " + valueDict["Plant_Name"] + "</p><p><b>Primary Source:</b> " + valueDict["PrimSource"] + "</p><p><b>Distance to high-voltage transmission:</b> " + formattedDistance + "</p>";
 };
+
