@@ -44,12 +44,6 @@ function createMap() {
         });
     });
 
-    // Dropdown functionality
-    var chevron = document.querySelector('.stats-dropdown-chevron');
-    chevron.addEventListener('click', function () {
-        this.classList.toggle('expanded');
-    });
-
     // Find the toggle checkbox
     var transmissionToggle = document.getElementById('toggle-transmission');
 

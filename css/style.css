@@ -75,11 +75,22 @@ body {
 }
 
 .energy-selection {
-    margin-bottom: 40px;
+    margin-bottom: 80px;
+    position: relative;
+
+}
+
+.energy-selection::after {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  left: 0px;
+  right: 40px;
+  border-bottom: 2px solid black;
 }
 
 .basemap-selection {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .toggle-transmission {
@@ -166,7 +177,6 @@ body {
     border-left: 2px solid black;
     border-right: 2px solid black;
     border-bottom: 2px solid black;
-    transition: height 0.3s ease;
     z-index: 2;
     pointer-events: auto;
     overflow: hidden;
@@ -175,12 +185,31 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    transition: height 0.3s ease;
+
   }
+
   
+  .blank-box::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 40px;
+    right: 40px;
+    border-bottom: 2px solid black;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
   .stats-dropdown-chevron.expanded + .blank-box {
     height: calc(100% + 50vh);
     overflow-y: auto;
+    border-bottom: 2px solid black;
   }
+
+  .stats-dropdown-chevron.expanded + .blank-box::after {
+    transform: scaleX(1);
+}
 
   .blank-box h2 {
     margin-top: 0;

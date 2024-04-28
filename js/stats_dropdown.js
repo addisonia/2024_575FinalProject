@@ -1,3 +1,14 @@
+function setupStatsDropdown() {
+    var chevron = document.querySelector('.stats-dropdown-chevron');
+    var blankBox = document.querySelector('.blank-box');
+    chevron.addEventListener('click', function () {
+        this.classList.toggle('expanded');
+        blankBox.classList.toggle('expanded');
+    });
+}
+
+
+
 function updateStatsDropdown(state) {
     // Load the power plants data
     fetch("data/PowerPlants_Continental_US_project.geojson")
@@ -52,8 +63,8 @@ function updateStatsDropdown(state) {
       });
   }
   
-  // Listen for the custom event triggered when a state is clicked
   document.addEventListener('stateclick', function (event) {
     var state = event.detail.state;
     updateStatsDropdown(state);
   });
+
