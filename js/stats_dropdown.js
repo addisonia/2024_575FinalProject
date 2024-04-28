@@ -21,11 +21,30 @@ function updateStatsDropdown(state) {
           }
         });
   
+        // Calculate the average distance to transmission lines for the selected state
+        var totalDistance = 0;
+        filteredData.forEach(function (feature) {
+          totalDistance += feature.properties.NEAR_DIST;
+        });
+        var averageDistance = filteredData.length > 0 ? (totalDistance / filteredData.length).toFixed(2) : 0;
+  
+        // Calculate the overall continental US average distance to transmission lines
+        var continentalUSData = data.features.filter(function (feature) {
+          return feature.properties.State !== 'Alaska' && feature.properties.State !== 'Hawaii';
+        });
+        var continentalUSTotalDistance = 0;
+        continentalUSData.forEach(function (feature) {
+          continentalUSTotalDistance += feature.properties.NEAR_DIST;
+        });
+        var continentalUSAverageDistance = continentalUSData.length > 0 ? (continentalUSTotalDistance / continentalUSData.length).toFixed(2) : 0;
+  
         // Generate the dropdown content
         var dropdownContent = '<h2>' + state + '</h2>';
         for (var energySource in energyCounts) {
           dropdownContent += '<p>' + energySource + ': ' + energyCounts[energySource] + '</p>';
         }
+        dropdownContent += '<p>Average Distance to Transmission Lines: ' + averageDistance + ' miles</p>';
+        dropdownContent += '<p>Continental US Average Distance: ' + continentalUSAverageDistance + ' miles</p>';
   
         // Update the dropdown content
         var blankBox = document.querySelector('.blank-box');
