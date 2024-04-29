@@ -24,10 +24,23 @@ function createMap() {
         attribution: 'Satellite Basemap'
     });
 
+    var topoBasemap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/USA_Topo_Maps/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 16,
+        attribution: 'Map data © USGS'
+    });
+
+    var climateZonesBasemap = L.tileLayer('https://lcz-generator.rub.de/tms/global-map-tiles/latest/{z}/{x}/{y}.png', {
+        tms: true,
+        maxZoom: 19,
+        attribution: 'Climate Zones Data © Matthias Demuzere et al. 2022'
+    });
+
     var basemaps = {
         "white": whiteBasemap,
         "openstreetmap": openStreetMap,
-        "satellite": satelliteBasemap
+        "satellite": satelliteBasemap,
+        "topographic": topoBasemap,
+        "climatezones": climateZonesBasemap
     };
 
     // Initially set the current basemap to openStreetMap
