@@ -9,6 +9,26 @@ function createMap() {
         zoomControl: true
     });
 
+
+    //set map to user location
+    map.on('locationfound', onLocationFound);
+    map.on('locationerror', onLocationError);
+
+    // Locate the user, but don't use 'setView' here to avoid auto zooming.
+    map.locate();
+
+    function onLocationFound(e) {
+        // If the location is found, just center the map on it without zooming in too much.
+        map.setView(e.latlng, 10);
+    }
+
+    function onLocationError(e) {
+        alert(e.message);
+        // Set the view to the default location (Wisconsin) if there's an error
+        map.setView([44.5, -92], 7);
+    }
+
+
     var whiteBasemap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
         maxZoom: 19,
         attribution: 'White Basemap'

@@ -68,9 +68,16 @@ function getData() {
             return response.json();
         })
         .then(function (data) {
-            // Store the transmission layer in the global variable but don't add to map yet
+            // Create the transmission layer from the GeoJSON data
             transmissionLayer = L.geoJson(data);
+
+            // Add the transmission layer to the map by default
+            transmissionLayer.addTo(map);
+
+            // Ensure the checkbox for transmission lines is checked
+            document.getElementById('toggle-transmission').checked = true;
         });
+
 }
 
 
