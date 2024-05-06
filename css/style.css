@@ -153,6 +153,12 @@ body {
     transition: top 0.3s ease;
     z-index: 2;
   }
+
+  .stats-dropdown-chevron:hover {
+    background-color: #ffffff;
+    outline: 2px solid #add8e6; 
+    box-shadow: 0 0 8px #add8e6;
+  }
   
   .stats-dropdown-chevron.expanded {
     top: calc(100% + 50vh + 46px);
@@ -361,14 +367,27 @@ body {
   margin-bottom: 10px;
   background-color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 0px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   outline: none;
 }
 
+.map-controls button {
+  color: black;
+  background-color: #f0f0f0; 
+  outline: 2px solid black;
+  transition: background-color 0.1s, outline 0.1s;
+}
+
 .map-controls button:hover {
-  background-color: #f2f2f2;
+  background-color: #ffffff;
+  outline: 2px solid #add8e6; 
+  box-shadow: 0 0 8px #add8e6;
+}
+
+.map-controls button i {
+  color: black; 
 }
 
 
