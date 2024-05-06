@@ -80,17 +80,28 @@ body {
   content: "";
   position: absolute;
   bottom: -40px;
-  left: 0px;
-  right: 40px;
+  left: -5px;
+  right: 30px;
   border-bottom: 2px solid black;
 }
 
 .basemap-selection {
   margin-bottom: 40px;
+  position: relative;
 }
 
+.basemap-selection::after {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  left: -5px;
+  right: 30px;
+  border-bottom: 2px solid black;
+}
+
+
 .toggle-transmission {
-    margin-top: 20px;
+    margin-top: 80px;
     margin-bottom: 10px;
     font-weight: bold;
 }
