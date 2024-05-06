@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     createMap();
     getData();
-    setupStatsDropdown();
+    setupStatsDropdown(); 
+    createLegend();
 });
 
 

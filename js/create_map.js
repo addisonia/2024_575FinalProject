@@ -92,8 +92,49 @@ function createMap() {
     });
 
     addStateOutlines(map);
+    createLegend();
 };
 
+
+function createLegend() {
+    var legendBox = document.querySelector('.legend-box');
+
+    var distances = [1, 10, 35, 150]; // Updated distances for the legend
+    var colors = ['#ffeda0', '#feb24c', '#f03b20', '#bd0026']; // Updated colors corresponding to the distances
+
+    // Create legend title
+    var legendTitle = '<h4 class="legend-title">Distance to Transmission Lines</h4>';
+    legendBox.innerHTML = legendTitle;
+
+    // Create legend items
+    for (var i = 0; i < distances.length; i++) {
+        var distance = distances[i];
+        var color = colors[i];
+
+        var legendItem = '<div class="legend-item">';
+        legendItem += '<div class="legend-circle" style="background-color: ' + color + '; border: 1px solid black;"></div>';
+        legendItem += '<span class="legend-label">' + distance + ' miles</span>';
+        legendItem += '</div>';
+
+        legendBox.innerHTML += legendItem;
+    }
+}
+
+// Update the calcColor function in the create_map.js file
+function calcColor(attValue) {
+    var color;
+    if (attValue <= 1) {
+        color = "#ffeda0";
+    } else if (attValue <= 10) {
+        color = "#feb24c";
+    } else if (attValue <= 35) {
+        color = "#f03b20";
+    } else {
+        color = "#bd0026";
+    }
+
+    return color;
+}
 
 function createPropSymbols(data, attributes) {
     //console.log(data)

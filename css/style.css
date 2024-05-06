@@ -228,13 +228,46 @@ body {
 
 .legend-box {
     position: absolute;
-    bottom: 10px;
+    bottom: 12px;
     left: 320px;
-    padding: 0px;
+    padding: 10px;
     background-color: #f0f0f0;
     border: 2px solid black;
-    width: 200px;
-    height: 150px;
+    width: 100px;
+    height: 140px;
     text-align: center;
     z-index: 2;
+}
+
+.legend {
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+.legend-box h4 {
+  margin-top: 0;
+}
+
+.legend-box .legend-title {
+  margin-top: 0;
+  font-size: 14px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.legend-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.legend-label {
+  font-size: 12px;
 }
