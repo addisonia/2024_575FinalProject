@@ -52,9 +52,9 @@ function updateStatsDropdown(state) {
       var dropdownContent = '<h2>' + state + '</h2>';
       dropdownContent += '<h4>Number of plants per energy selection:</h4>';
       for (var energySource in energyCounts) {
-        dropdownContent += '<p>' + energySource + ': ' + energyCounts[energySource] + '</p>';
+        dropdownContent += '<p class="energy-count">' + energySource + ': ' + energyCounts[energySource] + '</p>';
       }
-      
+
       // Wrap the average distance and continental US average distance lines inside a <div>
       dropdownContent += '<div class="distance-info">';
       dropdownContent += '<p>Average Distance to Transmission Lines: ' + averageDistance + ' miles</p>';
