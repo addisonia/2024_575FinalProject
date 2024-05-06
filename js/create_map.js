@@ -91,6 +91,27 @@ function createMap() {
         }
     });
 
+
+
+    // Location button functionality
+    var locationButton = document.querySelector('.location-button');
+    locationButton.addEventListener('click', function () {
+    map.locate({ setView: true, maxZoom: 10 });
+    });
+
+    // Zoom in button functionality
+    var zoomInButton = document.querySelector('.zoom-in-button');
+    zoomInButton.addEventListener('click', function () {
+    map.zoomIn();
+    });
+
+    // Zoom out button functionality
+    var zoomOutButton = document.querySelector('.zoom-out-button');
+    zoomOutButton.addEventListener('click', function () {
+    map.zoomOut();
+    });
+
+    
     addStateOutlines(map);
     createLegend();
 };

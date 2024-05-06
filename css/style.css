@@ -343,3 +343,32 @@ body {
 .github-icon a:hover {
   color: #999;
 }
+
+
+
+/* bottom right buttons */
+.map-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.map-controls button {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 10px;
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  outline: none;
+}
+
+.map-controls button:hover {
+  background-color: #f2f2f2;
+}
+
+
