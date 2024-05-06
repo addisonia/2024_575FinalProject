@@ -269,6 +269,11 @@ body {
 
   }
 
+  .blank-box .distance-info p {
+    font-size: 14px; /* Adjust the font size to match the energy source texts */
+    margin: 2px 0; /* Adjust the margin values to match the energy source texts */
+  }
+
 
 
 /* legend */

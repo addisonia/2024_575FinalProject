@@ -48,17 +48,31 @@ function updateStatsDropdown(state) {
       });
       var continentalUSAverageDistance = continentalUSData.length > 0 ? (continentalUSTotalDistance / continentalUSData.length).toFixed(2) : 0;
 
+
+      // Add missing energy sources with a count of 0
+      var allEnergySources = ['coal', 'natural gas', 'nuclear', 'petroleum', 'hydro', 'geothermal', 'solar', 'wind', 'biomass'];
+      allEnergySources.forEach(function (energySource) {
+        if (!energyCounts[energySource]) {
+          energyCounts[energySource] = 0;
+        }
+      });
+
+      // Sort the energy sources in descending order based on their counts
+      var sortedEnergySources = Object.keys(energyCounts).sort(function (a, b) {
+        return energyCounts[b] - energyCounts[a];
+      });
+
       // Generate the dropdown content
       var dropdownContent = '<h2>' + state + '</h2>';
       dropdownContent += '<h4>Number of plants per energy selection:</h4>';
-      for (var energySource in energyCounts) {
+      sortedEnergySources.forEach(function (energySource) {
         dropdownContent += '<p class="energy-count">' + energySource + ': ' + energyCounts[energySource] + '</p>';
-      }
+      });
 
       // Wrap the average distance and continental US average distance lines inside a <div>
       dropdownContent += '<div class="distance-info">';
-      dropdownContent += '<p>Average Distance to Transmission Lines: ' + averageDistance + ' miles</p>';
-      dropdownContent += '<p>Continental US Average Distance: ' + continentalUSAverageDistance + ' miles</p>';
+      dropdownContent += '<p>Average Distance to TM Lines: ' + averageDistance + ' miles</p>';
+      dropdownContent += '<p>Continental US Avg Distance: ' + continentalUSAverageDistance + ' miles</p>';
       dropdownContent += '</div>';
 
       // Update the dropdown content
