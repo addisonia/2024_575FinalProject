@@ -197,7 +197,12 @@ body {
     align-items: center;
     text-align: center;
     transition: height 0.3s ease;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+  }
 
+  .blank-box::-webkit-scrollbar {
+    display: none; /* Hide the scroll bar for WebKit browsers (Chrome, Safari) */
   }
 
   
@@ -226,13 +231,36 @@ body {
     margin-top: 0;
     padding-left: 20px;
     padding-right: 20px;
-    
+    position: relative;
+  }
+
+  .blank-box .distance-info {
+    position: relative;
+    margin-top: 20px;
+    padding-top: 15px;
+  }
+  
+  .blank-box .distance-info::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 40px;
+    right: 40px;
+    border-top: 2px solid black;
+  }
+
+  .blank-box h4 {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-left: 30px; 
+    padding-right: 30px; 
   }
   
   .blank-box p {
     margin: 5px 0;
     padding-left: 20px;
     padding-right: 20px;
+    margin-bottom: 0px;
   }
 
 
