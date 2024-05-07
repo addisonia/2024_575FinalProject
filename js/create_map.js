@@ -85,6 +85,7 @@ function createMap() {
         if (this.checked) {
             // If the checkbox is checked, add the transmission layer to the map
             transmissionLayer.addTo(map);
+            transmissionLayer.bringToBack();
         } else {
             // If the checkbox is unchecked, remove the transmission layer from the map
             map.removeLayer(transmissionLayer);
