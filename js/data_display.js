@@ -116,7 +116,7 @@ function processData(data) {
 
     //properties of the first feature in the dataset
     var properties = data.features[0].properties;
-    console.log(properties)
+    //console.log(properties)
 
     //push each attribute name into attributes array
     for (var attribute in properties) {

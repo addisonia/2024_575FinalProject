@@ -310,79 +310,70 @@ body {
 
 /* legend */
 .legend-box {
-    position: absolute;
-    bottom: 15px;
-    left: 320px;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border: 2px solid black;
-    width: 125px;
-    height: 130px;
-    text-align: center;
-    z-index: 2;
+  position: absolute;
+  bottom: 15px;
+  left: 320px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 2px solid black;
+  width: 100px;
+  height: 270px;
+  text-align: center;
+  z-index: 2;
 }
 
 .legend {
-  background-color: white;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
-}
-
-.legend-header {
-  font-size: 18px;
-  margin-top: 10px;
-  margin-bottom: 15px;
+background-color: white;
+padding: 10px;
+border-radius: 5px;
+box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
 }
 
 .legend-box h4 {
-  margin-top: 0;
+margin-top: 0;
 }
 
 .legend-box .legend-title {
-  margin-top: 0;
-  font-size: 14px;
+margin-top: 0;
+font-size: 14px;
+}
+
+.legend-symbolization {
+  font-size:10px;
+  margin-bottom: 15px;
 }
 
 .legend-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
-}
-
-.legend-item.point-feature {
-  padding-left: 18px;
-}
-
-.legend-item.transmission-line {
-  padding-left: 14px;
+display: flex;
+align-items: center;
+margin-bottom: 5px;
 }
 
 .legend-circle {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-right: 5px;
+width: 12px;
+height: 12px;
+border-radius: 50%;
+margin-right: 5px;
+opacity: 0.65;
 }
 
 .legend-label {
-  font-size: 12px;
+font-size: 12px;
 }
 
 .line-title {
-  font-size: 12px;
-  font-weight: normal;
+font-size: 14px
 }
 
 .legend-spacer {
-  height: 10px;
+height: 10px;
 }
 
 .rounded-rectangle {
-  width: 50px;
-  height: 3px;
-  border-radius: 10px; 
-  margin-left: 25px;
+width: 50px;
+height: 5px;
+border-radius: 10px; 
+margin-left: 25px;
 }
 
 

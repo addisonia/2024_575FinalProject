@@ -81,7 +81,7 @@ function createMap() {
     var transmissionToggle = document.getElementById('toggle-transmission');
 
     // Add a change event listener to toggle the transmission layer
-    transmissionToggle.addEventListener('change', function() {
+    transmissionToggle.addEventListener('change', function () {
         if (this.checked) {
             // If the checkbox is checked, add the transmission layer to the map
             transmissionLayer.addTo(map);
@@ -97,72 +97,73 @@ function createMap() {
     // Location button functionality
     var locationButton = document.querySelector('.location-button');
     locationButton.addEventListener('click', function () {
-    map.locate({ setView: true, maxZoom: 10 });
+        map.locate({ setView: true, maxZoom: 10 });
     });
 
     // Zoom in button functionality
     var zoomInButton = document.querySelector('.zoom-in-button');
     zoomInButton.addEventListener('click', function () {
-    map.zoomIn();
+        map.zoomIn();
     });
 
     // Zoom out button functionality
     var zoomOutButton = document.querySelector('.zoom-out-button');
     zoomOutButton.addEventListener('click', function () {
-    map.zoomOut();
+        map.zoomOut();
     });
 
-    
+
     addStateOutlines(map);
-    // createLegend();
+    createLegend();
 };
 
 
-// function createLegend() {
-//     var legendBox = document.querySelector('.legend-box');
+function createLegend() {
+    var legendBox = document.querySelector('.legend-box');
 
-//     var distances = [1, 10, 35, 150]; // Updated distances for the legend
-//     var colors = ['#ffeda0', '#feb24c', '#f03b20', '#bd0026']; // Updated colors corresponding to the distances
+    var distances = ['<= 5 miles', '<= 20 miles', '> 20 miles']; // Updated distances for the legend
+    var colors = ['#ffeda0', '#ff7750', '#FF0000']; // Updated colors corresponding to the distances
 
-//     // Create legend title
-//     var legendTitle = '<h4 class="legend-title">Distance to Closest TM Line</h4>';
-//     legendBox.innerHTML = legendTitle;
+    // Create legend title
+    var legendTitle = '<h4 class="legend-title">Energy plant</h4><div class= "legend-symbolization"> *Colors represent distance to closest high-voltage transmission line</div>';
+    legendBox.innerHTML = legendTitle;
 
-//     // Create legend items
-//     for (var i = 0; i < distances.length; i++) {
-//         var distance = distances[i];
-//         var color = colors[i];
+    // Create legend items
+    for (var i = 0; i < distances.length; i++) {
+        var distance = distances[i];
+        var color = colors[i];
 
-//         var legendItem = '<div class="legend-item">';
-//         legendItem += '<div class="legend-circle" style="background-color: ' + color + '; border: 1px solid black;"></div>';
-//         legendItem += '<span class="legend-label">' + distance + ' miles</span>';
-//         legendItem += '</div>';
+        var legendItem = '<div class="legend-item">';
+        legendItem += '<div class="legend-circle" style="background-color: ' + color + '; border: 1px solid black;"></div>';
+        legendItem += '<span class="legend-label">' + distance + '</span>';
+        legendItem += '</div>';
 
-//         legendBox.innerHTML += legendItem;
-//     }
+        legendBox.innerHTML += legendItem;
+    }
 
-//     legendBox.innerHTML += '<div class="legend-spacer"></div>';
-//     legendBox.innerHTML += '<h4 class="line-title">High-voltage transmission line (>= 345 kV)</h4>';
-//     legendItem = '<div class="legend-item">';
-//     legendItem += '<div class="rounded-rectangle" style="background-color: #1E90FF	;"></div></div>';
-//     legendBox.innerHTML += legendItem;
+    legendBox.innerHTML += '<div class="legend-spacer"></div>';
+    legendBox.innerHTML += '<h4 class="line-title">High-voltage transmission line (>= 345 kV)</h4>';
+    legendItem = '<div class="legend-item">';
+    legendItem += '<div class="rounded-rectangle" style="background-color: #8600cf	;"></div></div>';
+    legendBox.innerHTML += legendItem;
 
-// }
+}
 
 
 
 // Update the calcColor function in the create_map.js file
 function calcColor(attValue) {
     var color;
-    if (attValue <= 1) {
+    if (attValue <= 5) {
         color = "#ffeda0";
-    } else if (attValue <= 10) {
-        color = "#feb24c";
-    } else if (attValue <= 35) {
-        color = "#f03b20";
-    } else {
-        color = "#bd0026";
-    }
+    } else if (attValue <= 20) {
+        color = "#ff7750";
+    } else if (attValue > 20) {
+        color = "#FF0000";
+    } 
+    //else {
+    //    color = "#bd0026";
+    //}
 
     return color;
 }
@@ -176,10 +177,10 @@ function createPropSymbols(data, attributes) {
     }).addTo(map);
 
     // Bring the power plants layer to the front
-    powerPlantsLayer.bringToFront();
+    //powerPlantsLayer.bringToFront();
 
     // Set a higher zIndex for the power plants layer
-    powerPlantsLayer.setZIndex(1000);
+    //powerPlantsLayer.setZIndex(1000);
 };
 
 function pointToLayer(feature, latlng, attributes) {
@@ -216,27 +217,6 @@ function pointToLayer(feature, latlng, attributes) {
     //return the circle marker to the L.geoJson pointToLayer option
     return layer;
 };
-
-function calcColor(attValue) {
-    var color
-    if (attValue <= 5) {
-        color = "#ffeda0"
-    }
-    else if (attValue <= 25) {
-        color = "#fec44f"
-    }
-    else {
-        color = "#f03b20"
-    }
-
-    linearScale = d3.scaleLinear()
-        .domain([0, 20])
-        .range(["#ffeda0", "#f03b20"]);
-
-    return linearScale(attValue);
-};
-
-
 
 function PopupContent(properties, valueDict) {
     var distance = valueDict["NEAR_DIST"];
