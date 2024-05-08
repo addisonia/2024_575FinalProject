@@ -114,40 +114,42 @@ function createMap() {
 
     
     addStateOutlines(map);
-    createLegend();
+    // createLegend();
 };
 
 
-function createLegend() {
-    var legendBox = document.querySelector('.legend-box');
+// function createLegend() {
+//     var legendBox = document.querySelector('.legend-box');
 
-    var distances = [1, 10, 35, 150]; // Updated distances for the legend
-    var colors = ['#ffeda0', '#feb24c', '#f03b20', '#bd0026']; // Updated colors corresponding to the distances
+//     var distances = [1, 10, 35, 150]; // Updated distances for the legend
+//     var colors = ['#ffeda0', '#feb24c', '#f03b20', '#bd0026']; // Updated colors corresponding to the distances
 
-    // Create legend title
-    var legendTitle = '<h4 class="legend-title">Distance to Closest High-Voltage Line</h4>';
-    legendBox.innerHTML = legendTitle;
+//     // Create legend title
+//     var legendTitle = '<h4 class="legend-title">Distance to Closest TM Line</h4>';
+//     legendBox.innerHTML = legendTitle;
 
-    // Create legend items
-    for (var i = 0; i < distances.length; i++) {
-        var distance = distances[i];
-        var color = colors[i];
+//     // Create legend items
+//     for (var i = 0; i < distances.length; i++) {
+//         var distance = distances[i];
+//         var color = colors[i];
 
-        var legendItem = '<div class="legend-item">';
-        legendItem += '<div class="legend-circle" style="background-color: ' + color + '; border: 1px solid black;"></div>';
-        legendItem += '<span class="legend-label">' + distance + ' miles</span>';
-        legendItem += '</div>';
+//         var legendItem = '<div class="legend-item">';
+//         legendItem += '<div class="legend-circle" style="background-color: ' + color + '; border: 1px solid black;"></div>';
+//         legendItem += '<span class="legend-label">' + distance + ' miles</span>';
+//         legendItem += '</div>';
 
-        legendBox.innerHTML += legendItem;
-    }
+//         legendBox.innerHTML += legendItem;
+//     }
 
-    legendBox.innerHTML += '<div class="legend-spacer"></div>';
-    legendBox.innerHTML += '<h4 class="line-title">High-voltage transmission line (>= 345 kV)</h4>';
-    legendItem = '<div class="legend-item">';
-    legendItem += '<div class="rounded-rectangle" style="background-color: #1E90FF	;"></div></div>';
-    legendBox.innerHTML += legendItem;
+//     legendBox.innerHTML += '<div class="legend-spacer"></div>';
+//     legendBox.innerHTML += '<h4 class="line-title">High-voltage transmission line (>= 345 kV)</h4>';
+//     legendItem = '<div class="legend-item">';
+//     legendItem += '<div class="rounded-rectangle" style="background-color: #1E90FF	;"></div></div>';
+//     legendBox.innerHTML += legendItem;
 
-}
+// }
+
+
 
 // Update the calcColor function in the create_map.js file
 function calcColor(attValue) {
@@ -248,6 +250,6 @@ function PopupContent(properties, valueDict) {
     // Format the distance for display in the popup
     var formattedDistance = roundedDistance + " " + distanceUnit;
 
-    this.formatted = "<p><b>Plant Name:</b> " + valueDict["Plant_Name"] + "</p><p><b>Primary Source:</b> " + valueDict["PrimSource"] + "</p><p><b>Distance to high-voltage transmission:</b> " + formattedDistance + "</p>";
+    this.formatted = "<p><b>Plant Name:</b> " + valueDict["Plant_Name"] + "</p><p><b>Primary Energy Plant Source:</b> " + valueDict["PrimSource"] + "</p><p><b>Distance To High-Voltage Transmission:</b> " + formattedDistance + "</p>";
 };
 

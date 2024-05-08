@@ -76,8 +76,29 @@
         </div>
 
         <div class="legend-box">
-            <h2>Legend</h2>
+            <h2 class="legend-header">Legend</h2>
             <!-- Add legend content here -->
+            <div class="legend-item point-feature">
+                <div class="legend-circle" style="background-color: #ffeda0; border: 1px solid black;"></div>
+                <span class="legend-label">1 mile</span>
+            </div>
+            <div class="legend-item point-feature">
+                <div class="legend-circle" style="background-color: #feb24c; border: 1px solid black;"></div>
+                <span class="legend-label">10 miles</span>
+            </div>
+            <div class="legend-item point-feature">
+                <div class="legend-circle" style="background-color: #f03b20; border: 1px solid black;"></div>
+                <span class="legend-label">35 miles</span>
+            </div>
+            <div class="legend-item point-feature">
+                <div class="legend-circle" style="background-color: #bd0026; border: 1px solid black;"></div>
+                <span class="legend-label">150 miles</span>
+            </div>
+            <div class="legend-spacer"></div>
+            <h4 class="line-title">High Voltage TM Line (>= 345 kV)</h4>
+            <div class="legend-item transmission-line">
+                <div class="rounded-rectangle" style="background-color: #1E90FF;"></div>
+            </div>
         </div>
 
         <div class="map-controls">
@@ -93,8 +114,9 @@
           </div>
           
     </div>
+    <script src="https://unpkg.com/leaflet-pip@1.1.0/leaflet-pip.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-    <script type = "text/javascript" src = "lib/d3.v7.js"></script>
+    <script type="text/javascript" src = "lib/d3.v7.js"></script>
     <script type="text/javascript" src="lib/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="js/data_display.js"></script>
     <script type="text/javascript" src="js/state_outlines.js"></script>

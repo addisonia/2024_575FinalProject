@@ -299,8 +299,8 @@ body {
     padding: 10px;
     background-color: #f0f0f0;
     border: 2px solid black;
-    width: 100px;
-    height: 240px;
+    width: 140px;
+    height: 190px;
     text-align: center;
     z-index: 2;
 }
@@ -310,6 +310,11 @@ body {
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+.legend-header {
+  font-size: 18px;
+  margin-top: 10px;
 }
 
 .legend-box h4 {
@@ -327,6 +332,14 @@ body {
   margin-bottom: 5px;
 }
 
+.legend-item.point-feature {
+  padding-left: 40px;
+}
+
+.legend-item.transmission-line {
+  padding-left: 20px;
+}
+
 .legend-circle {
   width: 12px;
   height: 12px;
@@ -339,7 +352,7 @@ body {
 }
 
 .line-title {
-  font-size: 14px
+  font-size: 12px
 }
 
 .legend-spacer {
