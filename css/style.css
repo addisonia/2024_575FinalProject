@@ -285,13 +285,13 @@ body {
 /* legend */
 .legend-box {
     position: absolute;
-    bottom: 12px;
+    bottom: 15px;
     left: 320px;
     padding: 10px;
     background-color: #f0f0f0;
     border: 2px solid black;
     width: 100px;
-    height: 140px;
+    height: 240px;
     text-align: center;
     z-index: 2;
 }
@@ -327,6 +327,21 @@ body {
 
 .legend-label {
   font-size: 12px;
+}
+
+.line-title {
+  font-size: 14px
+}
+
+.legend-spacer {
+  height: 10px;
+}
+
+.rounded-rectangle {
+  width: 50px;
+  height: 3px;
+  border-radius: 10px; 
+  margin-left: 25px;
 }
 
 

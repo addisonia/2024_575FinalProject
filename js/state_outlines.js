@@ -18,9 +18,9 @@ function addStateOutlines(map) {
 
             // Apply new style to the clicked state
             layer.setStyle({
-              color: 'blue',
+              color: '#00CED1',
               weight: 3,
-              fillOpacity: 0
+              fillOpacity: 0.1
             });
 
             selectedStateLayer = layer;
@@ -53,9 +53,9 @@ function addStateOutlines(map) {
 
       if (wisconsinLayer) {
         wisconsinLayer.setStyle({
-          color: 'blue',
+          color: '#00CED1',
           weight: 3,
-          fillOpacity: 0
+          fillOpacity: 0.1
         });
         selectedStateLayer = wisconsinLayer;
 
