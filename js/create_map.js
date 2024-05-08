@@ -85,6 +85,7 @@ function createMap() {
         if (this.checked) {
             // If the checkbox is checked, add the transmission layer to the map
             transmissionLayer.addTo(map);
+            transmissionLayer.bringToBack();
         } else {
             // If the checkbox is unchecked, remove the transmission layer from the map
             map.removeLayer(transmissionLayer);
@@ -124,7 +125,7 @@ function createLegend() {
     var colors = ['#ffeda0', '#feb24c', '#f03b20', '#bd0026']; // Updated colors corresponding to the distances
 
     // Create legend title
-    var legendTitle = '<h4 class="legend-title">Distance to Transmission Lines</h4>';
+    var legendTitle = '<h4 class="legend-title">Distance to Closest High-Voltage Line</h4>';
     legendBox.innerHTML = legendTitle;
 
     // Create legend items
@@ -139,6 +140,13 @@ function createLegend() {
 
         legendBox.innerHTML += legendItem;
     }
+
+    legendBox.innerHTML += '<div class="legend-spacer"></div>';
+    legendBox.innerHTML += '<h4 class="line-title">High-voltage transmission line (>= 345 kV)</h4>';
+    legendItem = '<div class="legend-item">';
+    legendItem += '<div class="rounded-rectangle" style="background-color: #1E90FF	;"></div></div>';
+    legendBox.innerHTML += legendItem;
+
 }
 
 // Update the calcColor function in the create_map.js file
