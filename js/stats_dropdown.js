@@ -6,6 +6,11 @@ function setupStatsDropdown() {
     this.classList.toggle('expanded');
     blankBox.classList.toggle('expanded');
   });
+
+  // Add the blink class to the chevron box after a 3-second delay
+  setTimeout(function() {
+    chevron.classList.add('blink');
+  }, 3000);
 }
 
 function updateStatsDropdown(state) {
@@ -64,7 +69,7 @@ function updateStatsDropdown(state) {
 
       // Generate the dropdown content
       var dropdownContent = '<h2>' + state + '</h2>';
-      dropdownContent += '<h4>Number of plants per energy selection:</h4>';
+      dropdownContent += '<h4>Number of Energy Plants:</h4>';
       sortedEnergySources.forEach(function (energySource) {
         dropdownContent += '<p class="energy-count">' + energySource + ': ' + energyCounts[energySource] + '</p>';
       });
