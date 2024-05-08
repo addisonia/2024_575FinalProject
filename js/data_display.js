@@ -81,6 +81,7 @@ function getData() {
 
         // Add the transmission layer to the map by default
         transmissionLayer.addTo(map);
+        transmissionLayer.bringToBack();
 
         // Ensure the checkbox for transmission lines is checked
         document.getElementById('toggle-transmission').checked = true;

@@ -172,6 +172,12 @@ function createPropSymbols(data, attributes) {
             return pointToLayer(feature, latlng, attributes);
         }
     }).addTo(map);
+
+    // Bring the power plants layer to the front
+    powerPlantsLayer.bringToFront();
+
+    // Set a higher zIndex for the power plants layer
+    powerPlantsLayer.setZIndex(1000);
 };
 
 function pointToLayer(feature, latlng, attributes) {
