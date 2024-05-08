@@ -68,6 +68,7 @@ body {
 
 .energy-selection-header {
     margin-top: 30px;
+    font-size: 22px;
 }
 
 .energy-selection {
@@ -83,6 +84,10 @@ body {
   left: -5px;
   right: 30px;
   border-bottom: 2px solid black;
+}
+
+.basemap-selection-header {
+  font-size: 22px;
 }
 
 .basemap-selection {
@@ -101,15 +106,19 @@ body {
 
 
 .toggle-transmission {
-    margin-top: 80px;
-    margin-bottom: 10px;
-    font-weight: bold;
+  margin-top: 80px;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 
 
 
 /* stats dropdown */
+.stats-dropdown-header {
+  font-size: 18px;
+}
+
 .stats-dropdown {
   position: absolute;
   top: 0px;

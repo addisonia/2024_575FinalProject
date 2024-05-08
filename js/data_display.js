@@ -62,22 +62,50 @@ function getData() {
     document.getElementById("solar").checked = true;
     updateDisplayedEnergySources();
 
+
     // Load the transmission data
     fetch("data/Transmission_Continental_US.geojson")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            // Create the transmission layer from the GeoJSON data
-            transmissionLayer = L.geoJson(data);
-
-            // Add the transmission layer to the map by default
-            transmissionLayer.addTo(map);
-
-            // Ensure the checkbox for transmission lines is checked
-            document.getElementById('toggle-transmission').checked = true;
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        // Create the transmission layer from the GeoJSON data with green color
+        transmissionLayer = L.geoJson(data, {
+            style: function (feature) {
+                return {
+                    color: '#8600cf',
+                    weight: getWeight(map.getZoom())
+                };
+            }
         });
 
+        // Add the transmission layer to the map by default
+        transmissionLayer.addTo(map);
+
+        // Ensure the checkbox for transmission lines is checked
+        document.getElementById('toggle-transmission').checked = true;
+
+        // Update the transmission line weight when the zoom level changes
+        map.on('zoomend', function () {
+            transmissionLayer.setStyle(function (feature) {
+                return {
+                    color: '#8600cf',
+                    weight: getWeight(map.getZoom())
+                };
+            });
+        });
+    });
+
+    // Function to determine the weight based on the zoom level
+    function getWeight(zoomLevel) {
+    if (zoomLevel >= 10) {
+        return 4;
+    } else if (zoomLevel >= 7) {
+        return 3;
+    } else {
+        return 2;
+    }
+    }
 }
 
 
