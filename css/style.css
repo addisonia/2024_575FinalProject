@@ -281,6 +281,11 @@ body {
     border-top: 2px solid black;
   }
 
+  .blank-box .distance-info p {
+    padding-bottom: 2px; 
+}
+
+
   .blank-box h4 {
     margin-top: 5px;
     margin-bottom: 10px;
@@ -316,17 +321,17 @@ body {
   padding: 10px;
   background-color: #f0f0f0;
   border: 2px solid black;
-  width: 100px;
-  height: 270px;
+  width: 120px;
+  height: 230px;
   text-align: center;
   z-index: 2;
 }
 
 .legend {
-background-color: white;
-padding: 10px;
-border-radius: 5px;
-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
 }
 
 .legend-box h4 {
@@ -349,12 +354,18 @@ align-items: center;
 margin-bottom: 5px;
 }
 
+.rounded-rectangle {
+  padding-right: 20px;
+}
+
 .legend-circle {
-width: 12px;
-height: 12px;
-border-radius: 50%;
-margin-right: 5px;
-opacity: 0.65;
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-left: 20px;
+  opacity: 0.65;
 }
 
 .legend-label {
