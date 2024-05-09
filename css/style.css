@@ -80,7 +80,7 @@ body {
 .energy-selection::after {
   content: "";
   position: absolute;
-  bottom: -40px;
+  bottom: -20px;
   left: -5px;
   right: 30px;
   border-bottom: 2px solid black;
@@ -100,6 +100,7 @@ body {
 
 .basemap-selection-header {
   font-size: 22px;
+  margin-top:-40px;
 }
 
 .basemap-selection {
@@ -110,7 +111,7 @@ body {
 .basemap-selection::after {
   content: "";
   position: absolute;
-  bottom: -40px;
+  bottom: -20px;
   left: -5px;
   right: 30px;
   border-bottom: 2px solid black;
@@ -118,7 +119,7 @@ body {
 
 
 .toggle-transmission {
-  margin-top: 80px;
+  margin-top: 10px;
   margin-bottom: 10px;
   font-weight: bold;
 }
@@ -403,7 +404,7 @@ margin-left: 25px;
 /* github icon */
 .github-icon {
   position: absolute;
-  bottom: 15px;
+  bottom: 10px;
   left: 15px;
   font-size: 24px;
   z-index: 3;
