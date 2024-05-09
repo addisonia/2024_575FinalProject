@@ -71,7 +71,8 @@ function updateStatsDropdown(state) {
       var dropdownContent = '<h2>' + state + '</h2>';
       dropdownContent += '<h4>Number of Energy Plants:</h4>';
       sortedEnergySources.forEach(function (energySource) {
-        dropdownContent += '<p class="energy-count">' + energySource + ': ' + energyCounts[energySource] + '</p>';
+        var capitalizedEnergySource = energySource.charAt(0).toUpperCase() + energySource.slice(1);
+        dropdownContent += '<p class="energy-count">' + capitalizedEnergySource + ': ' + energyCounts[energySource] + '</p>';
       });
 
       // Wrap the average distance and continental US average distance lines inside a <div>

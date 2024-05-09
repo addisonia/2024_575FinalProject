@@ -125,7 +125,7 @@ function createLegend() {
     var colors = ['#ffeda0', '#ff7750', '#FF0000']; // Updated colors corresponding to the distances
 
     // Create legend title
-    var legendTitle = '<h4 class="legend-title">Energy plant</h4><div class= "legend-symbolization"> Colors represent distance to closest high-voltage transmission line</div>';
+    var legendTitle = '<h4 class="legend-title">Energy Plants</h4><div class= "legend-symbolization"> Colors represent distance to closest high-voltage transmission line</div>';
     legendBox.innerHTML = legendTitle;
 
     // Create legend items
@@ -142,7 +142,7 @@ function createLegend() {
     }
 
     legendBox.innerHTML += '<div class="legend-spacer"></div>';
-    legendBox.innerHTML += '<h4 class="line-title">High-voltage transmission line (>= 345 kV)</h4>';
+    legendBox.innerHTML += '<h4 class="line-title">High-Voltage Transmission Line (>= 345 kV)</h4>';
     legendItem = '<div class="legend-item">';
     legendItem += '<div class="rounded-rectangle" style="background-color: #8600cf	;"></div></div>';
     legendBox.innerHTML += legendItem;

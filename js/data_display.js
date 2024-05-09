@@ -128,3 +128,81 @@ function processData(data) {
 
     return attributes;
 };
+
+
+// Select All and Clear All buttons functionality
+document.addEventListener('DOMContentLoaded', function () {
+    var selectAllButton = document.getElementById('select-all');
+    var clearAllButton = document.getElementById('clear-all');
+    var energyCheckboxes = document.querySelectorAll('input[name="energy"]');
+
+    selectAllButton.addEventListener('click', function () {
+        energyCheckboxes.forEach(function (checkbox) {
+            checkbox.checked = true;
+        });
+        // Trigger a change event on the last checkbox to update the map
+        energyCheckboxes[energyCheckboxes.length - 1].dispatchEvent(new Event('change'));
+    });
+
+    clearAllButton.addEventListener('click', function () {
+        energyCheckboxes.forEach(function (checkbox) {
+            checkbox.checked = false;
+        });
+        updateDisplayedEnergySources();
+    });
+
+    // Find all the energy checkboxes
+    energyCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+            updateDisplayedEnergySources();
+        });
+    });
+});
+
+// Function to update the displayed energy sources based on the checked checkboxes
+function updateDisplayedEnergySources() {
+    // Remove all existing layers from the map
+    map.eachLayer(function (layer) {
+        if (layer instanceof L.CircleMarker) {
+            map.removeLayer(layer);
+        }
+    });
+
+    // Get the checked energy sources
+    var checkedEnergySources = Array.from(energyCheckboxes)
+        .filter(function (checkbox) {
+            return checkbox.checked;
+        })
+        .map(function (checkbox) {
+            return checkbox.value;
+        });
+
+    // Map the checkbox values to the corresponding values in the GeoJSON data
+    var mappedEnergySources = checkedEnergySources.map(function (source) {
+        switch (source) {
+            case 'hydro':
+                return 'hydroelectric';
+            case 'gas':
+                return 'natural gas';
+            default:
+                return source;
+        }
+    });
+
+    // Load the power plants data and filter based on the checked energy sources
+    fetch("data/PowerPlants_Continental_US_project.geojson")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (json) {
+            var filteredFeatures = json.features.filter(function (feature) {
+                return mappedEnergySources.includes(feature.properties.PrimSource);
+            });
+            var filteredJson = {
+                type: "FeatureCollection",
+                features: filteredFeatures
+            };
+            var attributes = processData(filteredJson);
+            createPropSymbols(filteredJson, attributes);
+        });
+}
