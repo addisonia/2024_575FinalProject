@@ -183,7 +183,7 @@ body {
   }
   
   .stats-dropdown-chevron.expanded {
-    top: calc(100% + 50vh + 46px);
+    top: calc(100% + 58vh + 46px);
   }
   
   .stats-dropdown-chevron i {
@@ -239,16 +239,17 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     text-align: center;
     transition: height 0.3s ease;
     scrollbar-width: none; 
     -ms-overflow-style: none;
   }
 
-  .blank-box::-webkit-scrollbar {
+  /*.blank-box::-webkit-scrollbar {
     display: none; /* Hide the scroll bar for WebKit browsers (Chrome, Safari) */
-  }
+  /*}*/
+  
 
   
   .blank-box::after {
@@ -263,7 +264,7 @@ body {
   }
 
   .stats-dropdown-chevron.expanded + .blank-box {
-    height: calc(100% + 50vh);
+    height: calc(100% + 58vh);
     overflow-y: auto;
     border-bottom: 2px solid black;
   }
@@ -314,7 +315,9 @@ body {
   .blank-box p.energy-count {
     font-size: 14px; /* Adjust the font size as needed */
     margin: 2px 0; /* Adjust the margin values to reduce the spacing */
-
+    white-space: pre-wrap;
+    text-align: left;
+    font-family: Consolas, monospace; /* Change font to Consolas */
   }
 
   .blank-box .distance-info p {

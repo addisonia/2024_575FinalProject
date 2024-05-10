@@ -8,7 +8,7 @@ function setupStatsDropdown() {
   });
 
   // Add the blink class to the chevron box after a 3-second delay
-  setTimeout(function() {
+  setTimeout(function () {
     chevron.classList.add('blink');
   }, 3000);
 }
@@ -35,6 +35,28 @@ function updateStatsDropdown(state) {
           energyCounts[energySource] = 1;
         }
       });
+
+      var avgDistance = {};
+      filteredData.forEach(function (feature) {
+        var energySource = feature.properties.PrimSource;
+        if (avgDistance[energySource]) {
+          avgDistance[energySource] += feature.properties.NEAR_DIST;
+        } else {
+          avgDistance[energySource] = feature.properties.NEAR_DIST;
+        }
+      });
+
+      for (var source in avgDistance) {
+        if (energyCounts[source] != 0) {
+          avgDistance[source] /= energyCounts[source]
+          avgDistance[source] = (avgDistance[source]).toFixed(2).toString() + " miles";
+        }
+        else {
+          avgDistance[source] = "NaN"
+        }
+      };
+      console.log(energyCounts)
+      console.log(avgDistance)
 
       // Calculate the average distance to transmission lines for the selected state
       var totalDistance = 0;
@@ -69,15 +91,21 @@ function updateStatsDropdown(state) {
 
       // Generate the dropdown content
       var dropdownContent = '<h2>' + state + '</h2>';
-      dropdownContent += '<h4>Number of Energy Plants:</h4>';
+      dropdownContent += '<h4>Number of Energy Plants and AVG Distance from Nearest High-Voltage TM Line:</h4>';
       sortedEnergySources.forEach(function (energySource) {
         var capitalizedEnergySource = energySource.charAt(0).toUpperCase() + energySource.slice(1);
-        dropdownContent += '<p class="energy-count">' + capitalizedEnergySource + ': ' + energyCounts[energySource] + '</p>';
+        var stringLength = (capitalizedEnergySource + ': ' + energyCounts[energySource]).length;
+        console.log(stringLength)
+
+        var artificialWhitespace = createWhitespace(stringLength, 20)
+        console.log("d" + artificialWhitespace + "g")
+        dropdownContent += '<p class="energy-count">' + capitalizedEnergySource + ': ' + energyCounts[energySource] + artificialWhitespace + "| " +
+          avgDistance[energySource] + '</p>';
       });
 
       // Wrap the average distance and continental US average distance lines inside a <div>
       dropdownContent += '<div class="distance-info">';
-      dropdownContent += '<p>Average Distance to TM Lines: ' + averageDistance + ' miles</p>';
+      dropdownContent += '<p>' + state + ' Average Distance to TM Lines: ' + averageDistance + ' miles</p>';
       dropdownContent += '<p>Continental US Avg Distance: ' + continentalUSAverageDistance + ' miles</p>';
       dropdownContent += '</div>';
 
@@ -85,6 +113,15 @@ function updateStatsDropdown(state) {
       var blankBox = document.querySelector('.blank-box');
       blankBox.innerHTML = dropdownContent;
     });
+}
+
+function createWhitespace(length, desiredLength) {
+  var whitespace = "";
+  // Generate whitespace dynamically
+  for (var i = 0; i < desiredLength - length; i++) {
+      whitespace += " ";
+  }
+  return whitespace;
 }
 
 document.addEventListener('stateclick', function (event) {
